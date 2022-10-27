@@ -54,42 +54,50 @@ const min = document.querySelector("#min");
 const max = document.querySelector("#max");
 const productContainer = document.querySelector("#productContainer");
 const form = document.querySelector("#form");
+const totalProducts = document.querySelector("#totalProducts");
 
 
-let html = "";
-for (product of productData) {
-    html += `<div class="card">
-    <img src="${product.src}" alt="">
-    <h3>${product.name}</h3>
-    <p>${product.description}</p>
-    <p>US$ ${product.precio}</p>
-    <button>Comprar</button>
-</div>`;
+
+const render = (arr) => {
+    let productList = "";
+    for (let product of arr) {
+        const template = `<div class="card">
+        <img src="${product.src}" alt="">
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <p>US$ ${product.precio}</p>
+        <button>Comprar</button>
+        </div>`
+        productList += template;
+    }
+    total = arr.length
+    totalProducts.textContent = total;
+    productContainer.innerHTML = productList;
 }
 
-productContainer.innerHTML = html;
+render(productData);
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
+const filter = () => {
     if (!max.value || !min.value) {
         alert("debes llenar los campos");
         return;
     }
-    productContainer.innerHTML = "";
-    for (product of productData) {
+    const filteredData = []
+    for (let product of productData) {
         if (
             product.precio >= min.value &&
             product.precio <= max.value &&
             ramInput.value == product.ram
         ) {
-            productContainer.innerHTML += `<div class="card">
-        <img src="${product.src}" alt="">
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-        <p>$ ${product.precio}</p>
-        <button>Comprar</button>
-    </div>`;
+            filteredData.push(product)
         }
     }
+    render(filteredData)
+}
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    filter()
+    
 });
