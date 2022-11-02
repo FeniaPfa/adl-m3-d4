@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Desafio #</title>
+        <title>Desafio Arreglos y Objetos</title>
 
         <!-- Normalize css -->
         <link
@@ -15,10 +15,13 @@
             referrerpolicy="no-referrer"
         />
 
-<!-- Font -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
 
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
@@ -32,29 +35,26 @@
                     <option value="32">32</option>
                 </select>
 
-                    <p>Precio:</p>
-                    <div class="priceFilter">
-                        <div class="minPrice">
-                            <p>Desde</p>
-                            <input type="number" id="min" min="0"/>
-                        </div>
-                        <div class="maxPrice">
-                            <p>Hasta</p>
-                            <input type="number" id="max" min="0"/>
-                        </div>
+                <p>Precio:</p>
+                <div class="priceFilter">
+                    <div class="minPrice">
+                        <p>Desde</p>
+                        <input type="number" id="min" min="0" />
                     </div>
+                    <div class="maxPrice">
+                        <p>Hasta</p>
+                        <input type="number" id="max" min="0" />
+                    </div>
+                </div>
 
                 <button type="submit">Filtrar</button>
             </form>
         </nav>
 
         <main class="products">
-
             <p class="total">Total : <span id="totalProducts"></span></p>
 
-            <div class="product-container" id="productContainer">
-
-            </div>
+            <div class="product-container" id="productContainer"></div>
         </main>
 
         <script src="assets/js/script.js"></script>

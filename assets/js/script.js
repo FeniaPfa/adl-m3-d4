@@ -56,8 +56,6 @@ const productContainer = document.querySelector("#productContainer");
 const form = document.querySelector("#form");
 const totalProducts = document.querySelector("#totalProducts");
 
-
-
 const render = (arr) => {
     let productList = "";
     for (let product of arr) {
@@ -65,39 +63,38 @@ const render = (arr) => {
         <img src="${product.src}" alt="">
         <h3>${product.name}</h3>
         <p>${product.description}</p>
+        <h4>Ram: ${product.ram}</h4>
         <p>US$ ${product.precio}</p>
         <button>Comprar</button>
-        </div>`
+        </div>`;
         productList += template;
     }
-    total = arr.length
+    let total = arr.length;
     totalProducts.textContent = total;
     productContainer.innerHTML = productList;
-}
+};
 
 render(productData);
 
 const filter = () => {
     if (!max.value || !min.value) {
-        alert("debes llenar los campos");
+        alert("Debes llenar todos los campos");
         return;
     }
-    const filteredData = []
+    const filteredData = [];
     for (let product of productData) {
         if (
             product.precio >= min.value &&
             product.precio <= max.value &&
             ramInput.value == product.ram
         ) {
-            filteredData.push(product)
+            filteredData.push(product);
         }
     }
-    render(filteredData)
-}
-
+    render(filteredData);
+};
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    filter()
-    
+    filter();
 });
